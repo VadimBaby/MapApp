@@ -24,11 +24,18 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     
     @Published var locations: [Location]
     
+    @Published var currentLocation: Location {
+        didSet {
+            updateMapRegion(coordinate: currentLocation.coordinates)
+        }
+    }
+    
     var locationManager: CLLocationManager?
     
     override init(){
         let locations = LocationsDataService.locations
         self.locations = locations
+        self.currentLocation = LocationsDataService.locations.first!
     }
     
     private func updateMapRegion(coordinate: CLLocationCoordinate2D) {
