@@ -11,12 +11,16 @@ import CoreLocation
 import SwiftUI
 
 enum MapDetails {
-    static let startingLocation = CLLocationCoordinate2D(latitude: 55.030488, longitude: 82.925218)
+    static let startingLocation = LocationsDataService.locations.first!.coordinates
     static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 }
 
 class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject {
-    @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
+    
+    @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(
+        center: MapDetails.startingLocation,
+        span: MapDetails.defaultSpan
+    )
     
     @Published var locations: [Location]
     
@@ -25,6 +29,12 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     override init(){
         let locations = LocationsDataService.locations
         self.locations = locations
+    }
+    
+    private func updateMapRegion(coordinate: CLLocationCoordinate2D) {
+        withAnimation(.spring()){
+            mapRegion = MKCoordinateRegion(center: coordinate, span: MapDetails.defaultSpan)
+        }
     }
     
     func checkIfLocationServicesIsEnabled() {
@@ -40,9 +50,7 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         switch locationManager.authorizationStatus {
             
         case .authorizedAlways, .authorizedWhenInUse:
-            withAnimation(.spring()) {
-                mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
-            }
+            updateMapRegion(coordinate: locationManager.location!.coordinate)
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         default:
@@ -62,7 +70,7 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         case .denied:
             print("You have denied this app location permission. Go into settings to change it.")
         case .authorizedAlways, .authorizedWhenInUse:
-            mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
+            updateMapRegion(coordinate: locationManager.location!.coordinate)
         default:
             break
         }
