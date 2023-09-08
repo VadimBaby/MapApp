@@ -58,6 +58,7 @@ extension LocationsView {
                     .foregroundColor(.primary)
                     .frame(height: 75)
                     .frame(maxWidth: .infinity)
+                    .animation(.none, value: locationsViewModel.currentLocation)
                     .overlay(alignment: .leading) {
                         Image(systemName: "arrow.down")
                             .font(.headline)

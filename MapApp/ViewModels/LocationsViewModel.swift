@@ -52,6 +52,13 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         }
     }
     
+    func showNextLocation(location: Location){
+        withAnimation(.easeInOut){
+            currentLocation = location
+            showLocationList = false
+        }
+    }
+    
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
