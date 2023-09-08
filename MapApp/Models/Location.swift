@@ -16,4 +16,8 @@ struct Location: Identifiable {
     let description: String
     let imageNames: [String]
     let link: String
+    
+    var headerTitle: String {
+        return name + ", " + cityName
+    }
 }
