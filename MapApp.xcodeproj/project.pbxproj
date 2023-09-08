@@ -314,6 +314,9 @@
 				DEVELOPMENT_TEAM = 3U7F2TKHLN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to help you find your nearest building";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We want to help you find your nearest building";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to help you find your nearest building";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -343,6 +346,9 @@
 				DEVELOPMENT_TEAM = 3U7F2TKHLN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to help you find your nearest building";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We want to help you find your nearest building";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to help you find your nearest building";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

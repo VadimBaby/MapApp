@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationsView: View {
     @EnvironmentObject var locationsViewModel: LocationsViewModel
     
     var body: some View {
         ZStack{
-            
+            Map(
+                coordinateRegion: $locationsViewModel.mapRegion,
+                showsUserLocation: true
+            )
+                .onAppear{
+                    locationsViewModel.checkIfLocationServicesIsEnabled()
+                }
         }
+        .ignoresSafeArea()
     }
 }
 
