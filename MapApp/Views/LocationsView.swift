@@ -12,7 +12,7 @@ struct LocationsView: View {
     @EnvironmentObject var locationsViewModel: LocationsViewModel
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing){
+        ZStack(){
             Map(
                 coordinateRegion: $locationsViewModel.mapRegion,
                 showsUserLocation: true
@@ -22,16 +22,12 @@ struct LocationsView: View {
                 }
                 .ignoresSafeArea()
             
-            Button(action: locationsViewModel.centerMapOnUserLocation) {
-                Circle()
-                    .frame(width: 65, height: 65)
-                    .overlay{
-                        Image(systemName: "location.fill")
-                            .font(.title)
-                            .foregroundColor(Color.black)
-                    }
-                    .foregroundColor(Color(uiColor: UIColor.white))
-                    .padding()
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    buttonCenterToUserLocation
+                }
             }
         }
     }
@@ -41,5 +37,21 @@ struct LocationsView_Previews: PreviewProvider {
     static var previews: some View {
         LocationsView()
             .environmentObject(LocationsViewModel())
+    }
+}
+
+extension LocationsView {
+    private var buttonCenterToUserLocation: some View {
+        Button(action: locationsViewModel.centerMapOnUserLocation) {
+            Circle()
+                .fill(.thinMaterial)
+                .frame(width: 65, height: 65)
+                .overlay{
+                    Image(systemName: "location.fill")
+                        .font(.title)
+                        .foregroundColor(Color.black)
+                }
+                .padding()
+        }
     }
 }
