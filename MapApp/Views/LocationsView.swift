@@ -22,6 +22,13 @@ struct LocationsView: View {
                 }
                 .ignoresSafeArea()
             
+            VStack(spacing: 0){
+                header
+                    .padding()
+
+                Spacer()
+            }
+            
             VStack{
                 Spacer()
                 HStack{
@@ -41,6 +48,26 @@ struct LocationsView_Previews: PreviewProvider {
 }
 
 extension LocationsView {
+    private var header: some View {
+        VStack{
+            Text(locationsViewModel.currentLocation.headerTitle)
+                .font(.title2)
+                .fontWeight(.black)
+                .foregroundColor(.primary)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .overlay(alignment: .leading) {
+                    Image(systemName: "arrow.down")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .padding()
+                }
+        }
+        .background(.thickMaterial)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
+    }
+    
     private var buttonCenterToUserLocation: some View {
         Button(action: locationsViewModel.centerMapOnUserLocation) {
             Circle()
