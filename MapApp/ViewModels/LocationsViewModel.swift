@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 import CoreLocation
+import SwiftUI
 
 enum MapDetails {
     static let startingLocation = CLLocationCoordinate2D(latitude: 55.030488, longitude: 82.925218)
@@ -30,6 +31,22 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
+        }
+    }
+    
+    func centerMapOnUserLocation() {
+        guard let locationManager = locationManager else { return }
+        
+        switch locationManager.authorizationStatus {
+            
+        case .authorizedAlways, .authorizedWhenInUse:
+            withAnimation(.spring()) {
+                mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
+            }
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        default:
+            break
         }
     }
     
