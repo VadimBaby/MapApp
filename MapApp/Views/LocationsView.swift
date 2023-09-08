@@ -56,7 +56,7 @@ extension LocationsView {
                     .font(.title2)
                     .fontWeight(.black)
                     .foregroundColor(.primary)
-                    .frame(height: 55)
+                    .frame(height: 75)
                     .frame(maxWidth: .infinity)
                     .overlay(alignment: .leading) {
                         Image(systemName: "arrow.down")
