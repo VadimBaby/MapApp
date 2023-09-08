@@ -14,6 +14,7 @@
 		2CD50F932AAB395D009751F1 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD50F922AAB395D009751F1 /* LocationsDataService.swift */; };
 		2CD50F962AAB3E68009751F1 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD50F952AAB3E68009751F1 /* LocationsView.swift */; };
 		2CD50F992AAB411F009751F1 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD50F982AAB411F009751F1 /* LocationsViewModel.swift */; };
+		2CD50F9D2AAB6221009751F1 /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD50F9C2AAB6221009751F1 /* LocationsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2CD50F922AAB395D009751F1 /* LocationsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 		2CD50F952AAB3E68009751F1 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		2CD50F982AAB411F009751F1 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		2CD50F9C2AAB6221009751F1 /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD50F952AAB3E68009751F1 /* LocationsView.swift */,
+				2CD50F9C2AAB6221009751F1 /* LocationsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				2CD50F932AAB395D009751F1 /* LocationsDataService.swift in Sources */,
 				2CD50F992AAB411F009751F1 /* LocationsViewModel.swift in Sources */,
 				2CD50F962AAB3E68009751F1 /* LocationsView.swift in Sources */,
+				2CD50F9D2AAB6221009751F1 /* LocationsListView.swift in Sources */,
 				2CD50F902AAB18A4009751F1 /* Location.swift in Sources */,
 				2CD50F7F2AAB0C87009751F1 /* MapAppApp.swift in Sources */,
 			);

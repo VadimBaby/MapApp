@@ -30,6 +30,8 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         }
     }
     
+    @Published var showLocationList: Bool = false
+    
     var locationManager: CLLocationManager?
     
     override init(){
@@ -41,6 +43,12 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     private func updateMapRegion(coordinate: CLLocationCoordinate2D) {
         withAnimation(.spring()){
             mapRegion = MKCoordinateRegion(center: coordinate, span: MapDetails.defaultSpan)
+        }
+    }
+    
+    func toggleShowLocationList() {
+        withAnimation(.easeInOut) {
+            showLocationList.toggle()
         }
     }
     

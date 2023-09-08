@@ -12,7 +12,7 @@ struct LocationsView: View {
     @EnvironmentObject var locationsViewModel: LocationsViewModel
     
     var body: some View {
-        ZStack(){
+        ZStack{
             Map(
                 coordinateRegion: $locationsViewModel.mapRegion,
                 showsUserLocation: true
@@ -28,6 +28,7 @@ struct LocationsView: View {
 
                 Spacer()
             }
+            .zIndex(1)
             
             VStack{
                 Spacer()
@@ -50,18 +51,25 @@ struct LocationsView_Previews: PreviewProvider {
 extension LocationsView {
     private var header: some View {
         VStack{
-            Text(locationsViewModel.currentLocation.headerTitle)
-                .font(.title2)
-                .fontWeight(.black)
-                .foregroundColor(.primary)
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .overlay(alignment: .leading) {
-                    Image(systemName: "arrow.down")
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                        .padding()
-                }
+            Button(action: locationsViewModel.toggleShowLocationList) {
+                Text(locationsViewModel.currentLocation.headerTitle)
+                    .font(.title2)
+                    .fontWeight(.black)
+                    .foregroundColor(.primary)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .overlay(alignment: .leading) {
+                        Image(systemName: "arrow.down")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                            .padding()
+                            .rotationEffect(Angle(degrees: locationsViewModel.showLocationList ? 180 : 0))
+                    }
+            }
+            
+            if locationsViewModel.showLocationList {
+                LocationsListView()
+            }
         }
         .background(.thickMaterial)
         .cornerRadius(10)
