@@ -51,6 +51,7 @@ extension LocationsView {
                         .font(.title)
                         .foregroundColor(Color.black)
                 }
+                .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
                 .padding()
         }
     }
