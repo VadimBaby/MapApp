@@ -75,7 +75,9 @@ extension LocationPreviewView {
     }
     
     private var learnMoreButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            locationsViewModel.sheetLocation = location
+        }) {
             Text("Learn More")
                 .font(.headline)
                 .frame(width: 125, height: 35)
