@@ -13,28 +13,7 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack{
-            Map(
-                coordinateRegion: $locationsViewModel.mapRegion,
-                showsUserLocation: true,
-                annotationItems: locationsViewModel.locations,
-                annotationContent: { location in
-                  //  MapMarker(coordinate: location.coordinates, tint: Color.blue)
-                    MapAnnotation(coordinate: location.coordinates) {
-                        LocationMapAnnotationView()
-                            .scaleEffect(locationsViewModel.currentLocation == location ? 1 : 0.7)
-                            .shadow(radius: 10)
-                            .onTapGesture {
-                                locationsViewModel.showNextLocation(location: location)
-                            }
-                            .animation(.easeInOut, value: locationsViewModel.currentLocation)
-                    }
-                }
-            )
-                .onAppear{
-                    locationsViewModel.checkIfLocationServicesIsEnabled()
-                }
-                .ignoresSafeArea()
-            
+            mapLayer
             VStack(spacing: 0){
                 header
                     .padding()
@@ -61,6 +40,30 @@ struct LocationsView_Previews: PreviewProvider {
 }
 
 extension LocationsView {
+    private var mapLayer: some View {
+        Map(
+            coordinateRegion: $locationsViewModel.mapRegion,
+            showsUserLocation: true,
+            annotationItems: locationsViewModel.locations,
+            annotationContent: { location in
+              //  MapMarker(coordinate: location.coordinates, tint: Color.blue)
+                MapAnnotation(coordinate: location.coordinates) {
+                    LocationMapAnnotationView()
+                        .scaleEffect(locationsViewModel.currentLocation == location ? 1 : 0.7)
+                        .shadow(radius: 10)
+                        .onTapGesture {
+                            locationsViewModel.showNextLocation(location: location)
+                        }
+                        .animation(.easeInOut, value: locationsViewModel.currentLocation)
+                }
+            }
+        )
+            .onAppear{
+                locationsViewModel.checkIfLocationServicesIsEnabled()
+            }
+            .ignoresSafeArea()
+    }
+    
     private var header: some View {
         VStack{
             Button(action: locationsViewModel.toggleShowLocationList) {
