@@ -15,7 +15,20 @@ struct LocationsView: View {
         ZStack{
             Map(
                 coordinateRegion: $locationsViewModel.mapRegion,
-                showsUserLocation: true
+                showsUserLocation: true,
+                annotationItems: locationsViewModel.locations,
+                annotationContent: { location in
+                  //  MapMarker(coordinate: location.coordinates, tint: Color.blue)
+                    MapAnnotation(coordinate: location.coordinates) {
+                        LocationMapAnnotationView()
+                            .scaleEffect(locationsViewModel.currentLocation == location ? 1 : 0.7)
+                            .shadow(radius: 10)
+                            .onTapGesture {
+                                locationsViewModel.showNextLocation(location: location)
+                            }
+                            .animation(.easeInOut, value: locationsViewModel.currentLocation)
+                    }
+                }
             )
                 .onAppear{
                     locationsViewModel.checkIfLocationServicesIsEnabled()
