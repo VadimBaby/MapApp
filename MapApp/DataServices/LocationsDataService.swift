@@ -20,7 +20,8 @@ class LocationsDataService {
                 "theatre-1",
                 "theatre-2",
             ],
-            link: "https://ru.wikipedia.org/wiki/Новосибирский_театр_оперы_и_балета"),
+            linkString: "https://ru.wikipedia.org/wiki/",
+            encodePartOfLinkString: "Новосибирский_театр_оперы_и_балета"),
         Location(
             name: "Торговый Центр Галерея",
             cityName: "Новосибирск",
@@ -30,7 +31,7 @@ class LocationsDataService {
                 "gallery-1",
                 "gallery-2",
             ],
-            link: "https://galereya-novosibirsk.ru"),
+            linkString: "https://galereya-novosibirsk.ru"),
         Location(
             name: "НКЭиВТ",
             cityName: "Новосибирск",
@@ -40,7 +41,8 @@ class LocationsDataService {
                 "mycollege-1",
                 "mycollege-2",
             ],
-            link: "https://ru.wikipedia.org/wiki/Новосибирский_колледж_электроники_и_вычислительной_техники"),
+            linkString: "https://ru.wikipedia.org/wiki/Новосибирский_колледж_электроники_и_вычислительной_техники",
+            encodePartOfLinkString: "Новосибирский_колледж_электроники_и_вычислительной_техники"),
         Location(
             name: "Бугринский мост",
             cityName: "Новосибирск",
@@ -50,7 +52,8 @@ class LocationsDataService {
                 "bridge-1",
                 "bridge-2",
             ],
-            link: "https://ru.wikipedia.org/wiki/Бугринский_мост"),
+            linkString: "https://ru.wikipedia.org/wiki/Бугринский_мост",
+            encodePartOfLinkString: "Бугринский_мост"),
     ]
     
 }
