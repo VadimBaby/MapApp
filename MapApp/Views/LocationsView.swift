@@ -39,7 +39,7 @@ struct LocationsView: View {
                 header
                     .padding()
                 Spacer()
-                buttonContent
+                locationsPreviewStack
             }
             .zIndex(1)
             
@@ -104,7 +104,7 @@ extension LocationsView {
         }
     }
     
-    private var buttonContent: some View {
+    private var locationsPreviewStack: some View {
         ZStack{
             ForEach(locationsViewModel.locations) { location in
                 if locationsViewModel.currentLocation == location {
