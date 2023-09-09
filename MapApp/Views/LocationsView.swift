@@ -25,22 +25,8 @@ struct LocationsView: View {
             VStack(spacing: 0){
                 header
                     .padding()
-
                 Spacer()
-                
-                ZStack{
-                    ForEach(locationsViewModel.locations) { location in
-                        if locationsViewModel.currentLocation == location {
-                            LocationPreviewView(location: location)
-                                .shadow(color: Color.black.opacity(0.3), radius: 20)
-                                .padding()
-                                .transition(.asymmetric(
-                                    insertion: .move(edge: .trailing),
-                                    removal: .move(edge: .leading))
-                                )
-                        }
-                    }
-                }
+                buttonContent
             }
             .zIndex(1)
             
@@ -102,6 +88,22 @@ extension LocationsView {
                 }
                 .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
                 .padding()
+        }
+    }
+    
+    private var buttonContent: some View {
+        ZStack{
+            ForEach(locationsViewModel.locations) { location in
+                if locationsViewModel.currentLocation == location {
+                    LocationPreviewView(location: location)
+                        .shadow(color: Color.black.opacity(0.3), radius: 20)
+                        .padding()
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .trailing),
+                            removal: .move(edge: .leading))
+                        )
+                }
+            }
         }
     }
 }
