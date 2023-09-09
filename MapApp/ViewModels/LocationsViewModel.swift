@@ -78,9 +78,15 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     }
     
     func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
+        DispatchQueue.global(qos: .default).async {
+            if CLLocationManager.locationServicesEnabled() {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    
+                    self.locationManager = CLLocationManager()
+                    self.locationManager!.delegate = self
+                }
+            }
         }
     }
     
