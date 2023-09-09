@@ -92,7 +92,7 @@ class LocationsViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
         case .denied:
             print("You have denied this app location permission. Go into settings to change it.")
         case .authorizedAlways, .authorizedWhenInUse:
-            updateMapRegion(coordinate: locationManager.location!.coordinate)
+            print("We have permission to find user location")
         default:
             break
         }
